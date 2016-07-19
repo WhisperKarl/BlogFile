@@ -32,14 +32,14 @@ number73.tenant = john
 john = nil
 number73 = nil
 ```
-运行可以看出，由于```john```有一个只想```Person```的强引用，而number73有一个指向```Apartment```的强引用，所以都无法释放。
+运行可以看出，由于`john`有一个指向`Person`的强引用，而number73有一个指向`Apartment`的强引用，所以都无法释放。
 强引用关系如图所示：
 ![53CBCE63-80C5-4E3B-A6D6-816C3FD0E0BD.png](http://upload-images.jianshu.io/upload_images/1642800-26b7f949c21e51f7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 置为nil后，如图所示：
 
 ![9BE6751A-2355-4DD2-AE2A-3A3300DDC561.png](http://upload-images.jianshu.io/upload_images/1642800-a082fb66b29b1176.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 ## 实例之间强引用的解决方法
-- 用```weak```修饰，适用于引用可以为nil的一方。如上面例子中，```apartment```可以为空，因此可以用```weak```修饰```tenant```:
+- 用`weak`修饰，适用于引用可以为nil的一方。如上面例子中，`apartment`可以为空，因此可以用`weak`修饰`tenant`:
 ``` 
 class Apartment {
 let number: Int
@@ -48,7 +48,7 @@ weak var tenant: Person?
 deinit{print"apartment is being deinitialized"}
 }
 ```
-- 用```unowned```修饰，适用于一方的引用不能为 ```nil ```的情形。如下面的例子，没个信用卡必定会有一个主人，因此信用卡类中的```customer```用```unowned```来修饰以解决循环引用
+- 用`unowned`修饰，适用于一方的引用不能为 `nil `的情形。如下面的例子，没个信用卡必定会有一个主人，因此信用卡类中的`customer`用`unowned`来修饰以解决循环引用
 ```
 class Customer {
 let name: String
@@ -67,7 +67,7 @@ self.customer = customer
 }
 }
 ```
-- ```unowned```和隐式解包的可选属性结合使用，适用于双方都不能为nil都有值的情况。如下面的例子，每个国家都会有城市，每个城市也都会属于某个国家：
+- `unowned`和隐式解包的可选属性结合使用，适用于双方都不能为nil都有值的情况。如下面的例子，每个国家都会有城市，每个城市也都会属于某个国家：
 ``` 
 class Country {
 let name: String
@@ -117,9 +117,9 @@ var paragraph: HTMLElement? = HTMLElement(name: "p", text: "hello,world")
 print(paragraph!.asHTML())
 paragraph = nil
 ```
-在这个例子中```asHTML```属性持有了闭包的强引用，而闭包中又使用了```self```引用了```self.name```和```self.text```，因此闭包捕获了self，这以为了闭包反过来持有了实例的强引用。这样就产生了循环引用
+在这个例子中`asHTML`属性持有了闭包的强引用，而闭包中又使用了`self`引用了`self.name`和`self.text`，因此闭包捕获了self，这以为了闭包反过来持有了实例的强引用。这样就产生了循环引用
 ## 解决闭包引起的循环引用
-解决方法是定义闭包的捕获列表，在捕获列表中对对象进行```weak```或者```unowned```修饰。
+解决方法是定义闭包的捕获列表，在捕获列表中对对象进行`weak`或者`unowned`修饰。
 - 如果闭包有参数列表和返回类型，把捕获列表放在它们前面：
 ```
 lazy var someClosure: (Int, String) -> String = {
@@ -127,7 +127,7 @@ lazy var someClosure: (Int, String) -> String = {
 // closure body goes here
 }  
 ```
-- 如果闭包没有指明参数列表和返回类型，即它们会通过上下文推断，那么可以把捕获列表和关键字```in```写在闭包最开始的地方：
+- 如果闭包没有指明参数列表和返回类型，即它们会通过上下文推断，那么可以把捕获列表和关键字`in`写在闭包最开始的地方：
 ```
 lazy var someClosure: Void -> String = {
 [unowned self, weak someInstance] in
