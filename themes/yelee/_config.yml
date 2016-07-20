@@ -172,7 +172,7 @@ jquery_ui: true
 
 # 是否开启边栏多标签切换
 # Birdhouse button in left column
-tagcloud: true
+tagcloud: false
 
 # Blogroll, Link exchange | 友情链接
 friends:
@@ -198,7 +198,7 @@ open_in_new:
   archives: true # 归档
   mini_archives: true # 迷你归档
   menu: false # 边栏菜单
-  friends: true  # 友情链接
+  friends: false  # 友情链接
   socail: true # 社交图标
 
 # Customize feed link 自定义订阅地址
