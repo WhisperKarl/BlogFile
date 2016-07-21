@@ -5,6 +5,7 @@ tags:
 ---
 ## 理论基础
 从iOS7以后，苹果就提供了自定义转场动画的API，通过API我们可以很容易的实现各种转场动画。这里对转场动画的实现做一个小结。
+<!-- more -->
 1. 第一步，自定义一个管理转场动画的对象，这个对象需要遵循`<UIViewControllerAnimatedTransitioning>`协议，并实现两个必要方法
 ``` obj-c 
 - (NSTimeInterval)transitionDuration:(id<UIViewControllerContextTransitioning>)transitionContext{

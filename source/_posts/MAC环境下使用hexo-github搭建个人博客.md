@@ -4,6 +4,7 @@ date: 2016-07-20 17:15:09
 tags:
 ---
 hexo是一个快速、简洁且高效的博客框架，深受开发者青睐，在这里记录一下如何快速的用hexo+github搭建一个属于自己的个人博客。
+<!-- more -->
 ### 初始化hexo
 1. 安装node.js
 可以到node.js的[官网](https://nodejs.org)根据自己的系统下载相应的安装包，Mac用户可以直接到我[网盘](http://yun.baidu.com/s/1hs4mZVu)下载，速度比较快
