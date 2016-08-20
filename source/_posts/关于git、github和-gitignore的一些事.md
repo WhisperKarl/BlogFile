@@ -1,7 +1,12 @@
 layout: pos
 title: 关于git、github和.gitignore的一些事
 date: 2016-05-17 17:06:19
+categories:
+- 编程
 tags:
+- iOS
+- git
+
 ---
 # 给已有的本地项目添加git仓库并推送到远程仓库
 <!--more-->

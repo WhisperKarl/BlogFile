@@ -1,7 +1,12 @@
 ---
 title: 'Swift笔记:从Swift再看ARC以及循环引用'
 date: 2016-06-15 20:17:06
+categories:
+- 编程
 tags:
+- iOS
+- Swift
+
 ---
 # 自动引用计数(ARC)
 Swift中ARC的原理同OC中是相同的，简单来讲就是当实例不再被使用（引用计数为0）时，实例会被释放。
