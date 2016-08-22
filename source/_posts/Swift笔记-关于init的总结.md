@@ -1,7 +1,11 @@
 ---
 title: 'Swift笔记:关于init的总结'
 date: 2016-05-25 21:14:02
+categories:
+- 编程
 tags:
+- iOS
+- Swift
 ---
 # 两种构造器
 Swift中为确保类在创建时每个属性都会被初始化，定义了两种构造器，分别为指定构造器（designated initializer）和便利构造器(convenience initializer)，每一个类都要至少包含一个指定构造器，而两种构造器之间的调用要符合以下三条规则：

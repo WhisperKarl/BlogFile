@@ -1,7 +1,10 @@
 ---
 title: MAC环境下使用hexo+github搭建个人博客
 date: 2016-07-20 17:15:09
+categories:
+- 编程
 tags:
+- hexo
 ---
 hexo是一个快速、简洁且高效的博客框架，深受开发者青睐，在这里记录一下如何快速的用hexo+github搭建一个属于自己的个人博客。
 <!-- more -->
