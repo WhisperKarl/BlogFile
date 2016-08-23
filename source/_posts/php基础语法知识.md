@@ -37,7 +37,7 @@ NULL（NULL）：NULL是空类型，对大小写不敏感，NULL类型只有一�
 !== ：非全等，$a!==$b，当a不等于b或者类型不同时，返回true
 - 逻辑运算符
 
-![逻辑运算符.png](http://upload-images.jianshu.io/upload_images/1642800-f943c667e71ade49.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![逻辑运算符.png](http://occxq9xco.bkt.clouddn.com/1642800-f943c667e71ade49.png)
 - 字符串连接运算符
 "." 并不改变原字符串
 ".=" 改变原字符串，

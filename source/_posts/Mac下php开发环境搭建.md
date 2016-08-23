@@ -27,7 +27,7 @@ Server built:   Feb 20 2016 20:03:19
 `open /etc/apache2/`
 找到http.conf文件，用文本编辑器打开，搜索 libexec/apache2/libphp5.so，如图
 
-![QQ20160811-0@2x.png](http://upload-images.jianshu.io/upload_images/1642800-ab41b819794d7c8f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![QQ20160811-0@2x.png](http://occxq9xco.bkt.clouddn.com/1642800-ab41b819794d7c8f.png)
 把搜索结果这一行前面的#去掉，保存文件。如果这里提示没有权限的话，选中该文件，右击点击显示简介，点击右下角的小锁解锁，然后点击左边的加号，把自己的账户添加进去并把权限设置为读与写，如果还是不行的话，就一层一层的往上修改文件夹的权限，知道可以修改为止。
 2. 重启Apache
 `sudo apachectl restart`
@@ -38,9 +38,9 @@ Server built:   Feb 20 2016 20:03:19
 
 #### 三、 配置MySql
 1. 去http://dev.mysql.com/downloads/mysql/ 下载对应的安装包。我选择的是
-![QQ20160811-1@2x.png](http://upload-images.jianshu.io/upload_images/1642800-e26aee23f72bc062.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![QQ20160811-1@2x.png](http://occxq9xco.bkt.clouddn.com/1642800-e26aee23f72bc062.png)
 下载完成后进行安装，安装过程中会提示一个临时密码，要暂存一下，如图
-![712523-232499c71bb79fcb.png](http://upload-images.jianshu.io/upload_images/1642800-a1ec806448bff3b4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![712523-232499c71bb79fcb.png](http://occxq9xco.bkt.clouddn.com/1642800-a1ec806448bff3b4.png)
 安装完成后可以在Mac系统中选择启动或者关闭MySql。
 2. 将MySql加入系统环境变量
 ```
@@ -51,7 +51,7 @@ Server built:   Feb 20 2016 20:03:19
 添加完成后，按esc，然后输入wq保存。
 最后在命令行输入source ~/.bash_profile
 ```
-![712523-42aa5aabaeb7b2bb.png](http://upload-images.jianshu.io/upload_images/1642800-a26ebb79a6d6265a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![712523-42aa5aabaeb7b2bb.png](http://occxq9xco.bkt.clouddn.com/1642800-a26ebb79a6d6265a.png)
 3. 修改mysql密码，先登录MySql
 `mysql -uroot -p`
 输入的密码就是刚才暂存的临时密码
