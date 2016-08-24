@@ -73,3 +73,19 @@ hexo d
 
 ### 如何在多台电脑上管理hexo博客
 这时候我们一样可以利用伟大的github，我们可以在github建一个仓库用来管理hexo文件目录，这样我们的每个操作都可以推到git上方便我们多台电脑同时管理。需要注意的是如果我们的主题是从github上拉下来的，那我们在推到自己的github上时需要移除主题的git仓库，否则主题是不会被上传到github上的，此外，当我们在一台新的电脑上拉取hexo文件后，需要重新配置hexo环境。
+### 绑定个人域名
+拥有自己的独立域名是件特别酷炫的事情，那么怎么样让自己的博客拥有世界上独一无二的域名呢？
+1. 购买域名
+一般去[万网](https://wanwang.aliyun.com)买，第一年45往后60一年的样子，比qq会员还便宜有木有！！具体购买过程就不多说了，非常简单，需要注意的是要及时实名认证，否则域名是没法访问的。
+2. 配置DNS地址
+申请完域名后我们就要把之前上传到github的页面和自己的域名绑定。先从万网后台把我们自己域名的DNS设置为DNSPod的免费DNS地址：`f1g1ns1.dnspod.net` 和 `f1g1ns2.dnspod.net`
+![QQ20160823-4@2x.png](http://occxq9xco.bkt.clouddn.com/dns.png)
+3. 配置域名解析
+到[DNSPod](https://www.dnspod.cn)后台注册一个账号，并且把我们的域名添加进去，在域名记录管理页面添加如下信息：
+![QQ20160823-5@2x.png](http://occxq9xco.bkt.clouddn.com/dnspod.png)
+4. 配置hexo
+在本地hexo文件目录的source目录下新建一个文本文件，命名为`CNAME`并且填入我们的域名地址:
+![QQ20160823-6@2x.png](http://occxq9xco.bkt.clouddn.com/cname.png)
+然后上传到github(`hexo d -g`)。
+到此我们就完成了个人域名和github page的绑定，快去试试吧！
+（需要注意的是，在DNSPod配置域名解析会需要些时间，一般是48h以内，耐心等待下）
