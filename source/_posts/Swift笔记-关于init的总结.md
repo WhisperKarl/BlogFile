@@ -19,7 +19,7 @@ Swift中为确保类在创建时每个属性都会被初始化，定义了两种
 即：指定构造器必须向上代理
 便利构造器必须横向代理
 关系如下图所示:
-![0D455C81-50D7-4344-AE56-4C811D23A559.png](http://upload-images.jianshu.io/upload_images/1642800-05228757be166d9c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![0D455C81-50D7-4344-AE56-4C811D23A559.png](http://occxq9xco.bkt.clouddn.com/init.jpg)
 # 初始化的两个阶段(两段式构造过程)
 Swift中类的构造包含两个阶段。简单来说，就是要保证属性先初始化，然后才能对属性进行操作。具体来讲就是：
 

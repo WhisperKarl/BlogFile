@@ -41,7 +41,7 @@ tags:
 
 
 
-![转场效果.gif](http://upload-images.jianshu.io/upload_images/1642800-833997054504db7d.gif?imageMogr2/auto-orient/strip)
+![转场效果.gif](http://occxq9xco.bkt.clouddn.com/animation.gif)
 这个demo是[@叶孤城](http://weibo.com/u/1438670852?refer_flag=1001030101_&is_all=1)在直播时候写的，模仿的是qq音乐的转场动画，他称之为截图大法，掌握这个方法，就可以实现绝大部分的转场效果了。我们来看一下是怎么实现的。
 1. 首先创建两个控制器FirstVC和SecondVC，结构都很简单，首页底部一个深色条，在深色条上添加一个小的周杰伦的图片。二级页中间一张大的周杰伦的图片。
 2. 创建一个管理动画的类`TransitionAnimationTest`，集成于`NSObject`，遵循`UIViewControllerAnimatedTransitioning`协议:

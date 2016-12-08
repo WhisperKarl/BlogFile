@@ -28,15 +28,15 @@ cd到项目目录下，运行指令：$ git init
 .gitignore 顾名思义，用来设置忽略更改的文件，即不需要上传到git服务器的文件,例如令我们厌烦的xcuserstate的改变也可以通过这个方法忽略。
 创建步骤：
 在**根目录**创建.gitignore右击项目target，新建文件，右击target能保证是在根目录创建文件，如果不是根目录那么.gitignore将不会生效
-![1.png](http://upload-images.jianshu.io/upload_images/1642800-ef4b486c7c16046b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![1.png](http://occxq9xco.bkt.clouddn.com/name.jpg)
 选择iOS->Other->Empety文件
-![2.png](http://upload-images.jianshu.io/upload_images/1642800-a610e2e56e577ee7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![2.png](http://occxq9xco.bkt.clouddn.com/empty.jpg)
 给文件命名为.gitignore
-![3.png](http://upload-images.jianshu.io/upload_images/1642800-39bd964e766657dc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![3.png](http://occxq9xco.bkt.clouddn.com/name.jpg)
 确认
-![4.png](http://upload-images.jianshu.io/upload_images/1642800-76e2e5d84a45f9ed.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![4.png](http://occxq9xco.bkt.clouddn.com/use.jpg)
 在.gitignore文件中添加常用的文件描述
-![5.png](http://upload-images.jianshu.io/upload_images/1642800-5aa59243376a478c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![5.png](http://occxq9xco.bkt.clouddn.com/description.jpg)
 到这一步一般就完成了.gitignore文件的创建，如果文件不起作用的话，有可能是和缓存相关，可以尝试参照[这篇文章](http://stackoverflow.com/questions/11451535/gitignore-not-working)
 另外附上OC常用的.gitignore描述，只需要把这段复制到.gitignore文件中并根据描述和自己需求选择需要忽略哪些类型的文件即可，来源：https://github.com/github/gitignore
 ```

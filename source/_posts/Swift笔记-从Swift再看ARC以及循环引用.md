@@ -40,10 +40,10 @@ number73 = nil
 ```
 运行可以看出，由于`john`有一个指向`Person`的强引用，而number73有一个指向`Apartment`的强引用，所以都无法释放。
 强引用关系如图所示：
-![53CBCE63-80C5-4E3B-A6D6-816C3FD0E0BD.png](http://upload-images.jianshu.io/upload_images/1642800-26b7f949c21e51f7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![53CBCE63-80C5-4E3B-A6D6-816C3FD0E0BD.png](http://occxq9xco.bkt.clouddn.com/cycle01.jpg)
 置为nil后，如图所示：
 
-![9BE6751A-2355-4DD2-AE2A-3A3300DDC561.png](http://upload-images.jianshu.io/upload_images/1642800-a082fb66b29b1176.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![9BE6751A-2355-4DD2-AE2A-3A3300DDC561.png](http://occxq9xco.bkt.clouddn.com/cycle02.jpg)
 ## 实例之间强引用的解决方法
 - 用`weak`修饰，适用于引用可以为nil的一方。如上面例子中，`apartment`可以为空，因此可以用`weak`修饰`tenant`:
 ``` 
