@@ -18,7 +18,7 @@ You should never rely on the `isa` pointer to determine class membership. Inst
 ### 代码验证
 下面我们通过简单的代码验证一下以上过程。
 首先我们创建一个简单的`Person`对象，有一个`age`属性：
-```
+```objectivec
 @interface Person
 @property (nonatomic, assign) int age;
 @end
@@ -26,15 +26,15 @@ You should never rely on the `isa` pointer to determine class membership. Inst
 @implementation Person
 
 -(void)setAge:(int)age{
-_age = age;
+    _age = age;
 }
 @end
 ```
 声明两个Person属性，并给person1对象添加KVO监听：
-```
-self.person1 = [[Person alloc] init];
-self.person2 = [[Person alloc] init];   
-[self.person1 addObserver:self forKeyPath:@"age" options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld context:nil];
+```objectivec
+    self.person1 = [[Person alloc] init];
+    self.person2 = [[Person alloc] init];   
+    [self.person1 addObserver:self forKeyPath:@"age" options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld context:nil];
 ```
 这时候我们打个断点，打印一下两个person对象的isa指针:
 ![打印 isa 指针](https://upload-images.jianshu.io/upload_images/1642800-e89447984e832b68.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
@@ -47,65 +47,65 @@ self.person2 = [[Person alloc] init];
 这样我们就可以初步证明了 KVO 的触发机制。即修改`isa`指针，只想一个新生成的类`NSKVONotifying_XXX`，并修改这个类的 setter 方法为`_NSSetXXXValueAndNotify `，从而发出通知。
 ### KVO 的触发流程 
 我们知道如果想手动触发 KVO，需要先调用`willChangeValueForKey:`再调用`didChangeValueForKey:`，我们来验证下是不是这样：
-```
+```objectivec
 #import "Person.h"
 
 @implementation Person
 
 - (void)setAge:(int)age{
-_age = age;
+    _age = age;
 }
 
 - (void)willChangeValueForKey:(NSString *)key{
-[super willChangeValueForKey:key];
-NSLog(@"will change key : %@",key);
+    [super willChangeValueForKey:key];
+    NSLog(@"will change key : %@",key);
 }
 
 - (void)didChangeValueForKey:(NSString *)key{
-NSLog(@"did change key : %@ --begin",key);
-[super didChangeValueForKey:key];
-NSLog(@"did change key : %@ --end",key);
+    NSLog(@"did change key : %@ --begin",key);
+    [super didChangeValueForKey:key];
+    NSLog(@"did change key : %@ --end",key);
 }
 @end
 ```
 运行程序，我们可以得到以下打印信息：
-```
+```objctivec
 KVO[80799:10056110] will change key : age
 KVO[80799:10056110] did change key : age --begin
 KVO[80799:10056110] age-<Person: 0x600000013f40>-{
-kind = 1;
-new = 1;
-old = 11;
+    kind = 1;
+    new = 1;
+    old = 11;
 }
 KVO[80799:10056110] did change key : age --end
 ```
 和我们预想的一样，派生类的 setter 方法的确调用了这两个方法。这里还有一个需要注意的是，如果我们不调用`super`方法，将不会触发通知，这也证明了 KVO 通知的发出确实是依赖这两个方法的调用。
 ### NSKVONotifying_Person 的结构
 KVO 的派生类也是 Class 类型，因此也遵循 `objc_class`的结构：
-```
+```objectivec
 struct objc_class : objc_object {
-// Class ISA;
-Class superclass;
-cache_t cache;             // formerly cache pointer and vtable
-class_data_bits_t bits;    // class_rw_t * plus custom rr/alloc flags
-class_rw_t *data();
-……
+    // Class ISA;
+    Class superclass;
+    cache_t cache;             // formerly cache pointer and vtable
+    class_data_bits_t bits;    // class_rw_t * plus custom rr/alloc flags
+    class_rw_t *data();
+    ……
 }
 ```
 而我们熟知的 methodList、propertyList 等信息都储存在`class_rw_t `类型的`data` 变量中：
-```
+```objectivec
 struct class_rw_t {
-// Be warned that Symbolication knows the layout of this structure.
-uint32_t flags;
-uint32_t version;
-const class_ro_t *ro;
-method_array_t methods;
-property_array_t properties;
-protocol_array_t protocols;
-……
+    // Be warned that Symbolication knows the layout of this structure.
+    uint32_t flags;
+    uint32_t version;
+    const class_ro_t *ro;
+    method_array_t methods;
+    property_array_t properties;
+    protocol_array_t protocols;
+    ……
 ```
 对于这块知识这里不做详细说明，我们继续看`NSKVONotifying_Person`都储存了哪些信息，我们先来打印一下它的 `superClass`:
-```
+```objectivec
 (lldb) p class_getSuperclass(object_getClass(self.person1))
 (Class) $11 = Person
 (lldb) 
